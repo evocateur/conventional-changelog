@@ -85,10 +85,13 @@ Specify a prefix for the git tag that will be taken into account during the comp
 
 For instance if your version tag is prefixed by `version/` instead of `v` you would specify `--tagPrefix=version/`
 
-
 #### parserOpts
 
 See the [conventional-commits-parser](https://github.com/conventional-changelog/conventional-commits-parser) docs.
+
+##### warn
+
+Will use the `warn` function from `parserOpts` to print out a message if there are no commits to process. `warn` must be a function to be used.
 
 #### callback
 
@@ -102,7 +105,9 @@ Object includes what's returned by `whatBump` and
 
 ####### releaseType
 
-Type: `string` Possible values: `'major'`, `'minor'` and `'patch'`
+Type: `string`
+
+Possible values: `major`, `minor` and `patch`, or `undefined` if `whatBump` does not return sa valid `level` property, or the `level` property is not set by `whatBump`.
 
 The value of what it should release as.
 
